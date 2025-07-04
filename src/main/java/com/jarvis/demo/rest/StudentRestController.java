@@ -32,10 +32,10 @@ public class StudentRestController {
         return students;
     }
 
-//    @GetMapping("/student/{StudentID}")
-//    public Student getStudent(@PathVariable int StudentID) {
-//        return students.get(StudentID-1);
-//    }
+    @GetMapping("/student/{StudentID}")
+    public Student getStudent(@PathVariable int StudentID) {
+        return students.get(StudentID-1);
+    }
 
 
 
