@@ -1,24 +1,37 @@
 package com.jarvis.springboot.cruddemo.rest;
 
-import com.jarvis.springboot.cruddemo.Entity.Employee;
+
 import com.jarvis.springboot.cruddemo.dao.EmployeeDAO;
+import com.jarvis.springboot.cruddemo.Entity.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
 
     private EmployeeDAO employeeDAO;
 
-    public EmployeeRestController(EmployeeDAO employeeDAO) {
-        employeeDAO = employeeDAO;
+    // quick and dirty: inject employee dao (use constructor injection)
+    public EmployeeRestController(EmployeeDAO theEmployeeDAO) {
+        employeeDAO = theEmployeeDAO;
     }
 
-    @GetMapping("/home")
-    public List<Employee> getAllEmployees() {
+    // expose "/employees" and return a list of employees
+    @GetMapping("/employees")
+    public List<Employee> findAll() {
         return employeeDAO.findAll();
     }
 
 }
+
+
+
+
+
+
+
+
